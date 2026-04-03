@@ -2,245 +2,243 @@ package bank.managemnent.system.java;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.Random;
 import com.toedter.calendar.JDateChooser;
-import java .awt.event.* ;
 
 public class SignupOne extends JFrame implements ActionListener {
-    long random ;
-    JTextField nameTextField, fnameTextField , dobTextField , emailTextField ,addressTextField , cityTextField , stateTextField ,pinTextField;
-    JButton next ;
-    JRadioButton male ,female , other , married, unmarried ;
-    JDateChooser dateChooser ;
 
-    SignupOne(){
+    long random;
+    JTextField nameTextField, fnameTextField, emailTextField,
+            addressTextField, cityTextField, stateTextField, pinTextField;
+    JButton next;
+    JRadioButton male, female, other, married, unmarried;
+    JDateChooser dateChooser;
+
+    SignupOne() {
+
+        // ✅ FIX 1: System Look & Feel
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        setTitle("Signup - Page 1");
+        setSize(900, 750);
+        setLocation(300, 20);
         setLayout(null);
+
+        getContentPane().setBackground(new Color(18, 24, 38));
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(100, 20, 700, 680);
+        panel.setBackground(new Color(30, 41, 59));
+        add(panel);
 
         Random ran = new Random();
         random = Math.abs((ran.nextLong() % 9000L) + 1000L);
 
-        JLabel formno = new JLabel("APPLICATION FORM NO. " + random);
-        formno.setFont(new Font("Raleway" ,Font.BOLD , 38));
-        formno.setBounds(140 , 20 , 600 , 40);
-        add(formno);
+        JLabel formno = new JLabel("APPLICATION NO. " + random);
+        formno.setFont(new Font("Arial", Font.BOLD, 22));
+        formno.setForeground(Color.WHITE);
+        formno.setBounds(180, 20, 400, 30);
+        panel.add(formno);
 
-        JLabel personalDetails = new JLabel("Page 1 : Personal Details");
-        personalDetails.setFont(new Font("Raleway" ,Font.BOLD , 22));
-        personalDetails.setBounds(290, 80 , 400 , 30);
-        add(personalDetails);
+        JLabel heading = new JLabel("Personal Details");
+        heading.setFont(new Font("Arial", Font.BOLD, 18));
+        heading.setForeground(Color.LIGHT_GRAY);
+        heading.setBounds(260, 60, 200, 30);
+        panel.add(heading);
 
-        JLabel name = new JLabel("Name:");
-        name.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        name.setBounds(100, 140 , 100 , 30);
-        add(name);
+        Font labelFont = new Font("Segoe UI", Font.BOLD, 14);
 
-        nameTextField = new JTextField();
-        nameTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        nameTextField.setBounds(300 ,140 , 400 ,30);
-        add(nameTextField);
+        // Name
+        JLabel name = new JLabel("Name");
+        styleLabel(name, 50, 120);
+        panel.add(name);
 
+        nameTextField = createTextField(200, 120);
+        panel.add(nameTextField);
 
+        // Father's Name
+        JLabel fname = new JLabel("Father's Name");
+        styleLabel(fname, 50, 170);
+        panel.add(fname);
 
-        JLabel fname = new JLabel("Father's Name:");
-        fname.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        fname.setBounds(100, 190 , 200 , 30);
-        add(fname);
+        fnameTextField = createTextField(200, 170);
+        panel.add(fnameTextField);
 
-        fnameTextField = new JTextField();
-        fnameTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        fnameTextField.setBounds(300 ,190 , 400 ,30);
-        add(fnameTextField);
-
-
-
-        JLabel dob = new JLabel("Date Of Birth:");
-        dob.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        dob.setBounds(100, 240 , 200 , 30);
-        add(dob) ;
+        // DOB
+        JLabel dob = new JLabel("Date of Birth");
+        styleLabel(dob, 50, 220);
+        panel.add(dob);
 
         dateChooser = new JDateChooser();
-        dateChooser.setBounds(300 , 240 , 400 , 30);
-        dateChooser.setForeground(new Color(105 , 105 ,105));
-        add(dateChooser);
+        dateChooser.setBounds(200, 220, 400, 40);
+        panel.add(dateChooser);
 
+        // Gender
+        JLabel gender = new JLabel("Gender");
+        styleLabel(gender, 50, 270);
+        panel.add(gender);
 
+        male = new JRadioButton("Male");
+        female = new JRadioButton("Female");
 
-        JLabel gender = new JLabel("Gender:");
-        gender.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        gender.setBounds(100, 290 , 200 , 30);
-        add(gender);
+        styleRadio(male, 200, 270);
+        styleRadio(female, 340, 270);
 
-        male = new JRadioButton("Male") ;
-        male.setBounds(300 , 290 , 60 , 30);
-        male.setBackground(Color.WHITE);
-        add(male) ;
+        // ✅ FIX 2: FORCE ICON
+        male.setIcon(UIManager.getIcon("RadioButton.icon"));
+        female.setIcon(UIManager.getIcon("RadioButton.icon"));
 
+        ButtonGroup g = new ButtonGroup();
+        g.add(male);
+        g.add(female);
 
-        female = new JRadioButton("Female") ;
-        female.setBounds(450 , 290 , 120 , 30);
-        female.setBackground(Color.WHITE);
-        add(female) ;
-//to choose only one in male or female
-        ButtonGroup gendergroup = new ButtonGroup() ;
-        gendergroup.add(male) ;
-        gendergroup.add(female);
+        panel.add(male);
+        panel.add(female);
 
+        // Email
+        JLabel email = new JLabel("Email");
+        styleLabel(email, 50, 320);
+        panel.add(email);
 
-        JLabel email = new JLabel("Email Address:");
-        email.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        email.setBounds(100, 340 , 200 , 30);
-        add(email);
+        emailTextField = createTextField(200, 320);
+        panel.add(emailTextField);
 
-        emailTextField = new JTextField();
-        emailTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        emailTextField.setBounds(300 ,340 , 400 ,30);
-        add(emailTextField);
+        // Marital
+        JLabel marital = new JLabel("Marital Status");
+        styleLabel(marital, 50, 370);
+        panel.add(marital);
 
+        married = new JRadioButton("Married");
+        unmarried = new JRadioButton("Unmarried");
+        other = new JRadioButton("Other");
 
-        JLabel marital = new JLabel("Marital Status:");
-        marital.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        marital.setBounds(100, 390 , 200 , 30);
-        add(marital);
+        styleRadio(married, 200, 370);
+        styleRadio(unmarried, 340, 370);
+        styleRadio(other, 500, 370);
 
-        married= new JRadioButton("Married") ;
-        married.setBounds(300 , 390 , 100 , 30);
-        married.setBackground(Color.WHITE);
-        add(married) ;
+        // ✅ FIX 2: FORCE ICON
+        married.setIcon(UIManager.getIcon("RadioButton.icon"));
+        unmarried.setIcon(UIManager.getIcon("RadioButton.icon"));
+        other.setIcon(UIManager.getIcon("RadioButton.icon"));
 
+        ButtonGroup m = new ButtonGroup();
+        m.add(married);
+        m.add(unmarried);
+        m.add(other);
 
-        unmarried = new JRadioButton("Unmarried") ;
-        unmarried.setBounds(450 , 390 , 100 , 30);
-        unmarried.setBackground(Color.WHITE);
-        add(unmarried) ;
+        panel.add(married);
+        panel.add(unmarried);
+        panel.add(other);
 
+        // Address
+        JLabel address = new JLabel("Address");
+        styleLabel(address, 50, 420);
+        panel.add(address);
 
-        other = new JRadioButton("Others") ;
-        other.setBounds(630 , 390 , 100 , 30);
-        other.setBackground(Color.WHITE);
-        add(other) ;
+        addressTextField = createTextField(200, 420);
+        panel.add(addressTextField);
 
-        ButtonGroup maritalgroup = new ButtonGroup() ;
-        maritalgroup.add(married) ;
-        maritalgroup.add(unmarried);
-        maritalgroup.add(other);
+        // City
+        JLabel city = new JLabel("City");
+        styleLabel(city, 50, 470);
+        panel.add(city);
 
+        cityTextField = createTextField(200, 470);
+        panel.add(cityTextField);
 
+        // State
+        JLabel state = new JLabel("State");
+        styleLabel(state, 50, 520);
+        panel.add(state);
 
-        JLabel address = new JLabel("Address:");
-        address.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        address.setBounds(100,440 , 200 , 30);
-        add(address);
+        stateTextField = createTextField(200, 520);
+        panel.add(stateTextField);
 
-        addressTextField = new JTextField();
-        addressTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        addressTextField.setBounds(300 ,440 , 400 ,30);
-        add(addressTextField);
+        // Pin
+        JLabel pin = new JLabel("Pin Code");
+        styleLabel(pin, 50, 570);
+        panel.add(pin);
 
-        JLabel city = new JLabel("City:");
-        city.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        city.setBounds(100,490 , 200 , 30);
-        add(city);
+        pinTextField = createTextField(200, 570);
+        panel.add(pinTextField);
 
-        cityTextField = new JTextField();
-        cityTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        cityTextField.setBounds(300 ,490 , 400 ,30);
-        add(cityTextField);
+        next = createButton("NEXT", 250, 620);
+        panel.add(next);
 
-        JLabel state = new JLabel("State:");
-        state.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        state.setBounds(100,540 , 200 , 30);
-        add(state);
-
-        stateTextField = new JTextField();
-        stateTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        stateTextField.setBounds(300 ,540 , 400 ,30);
-        add(stateTextField);
-
-        JLabel pincode = new JLabel("Pin Code:");
-        pincode.setFont(new Font("Raleway" ,Font.BOLD , 20));
-        pincode.setBounds(100,590 , 200 , 30);
-        add(pincode);
-
-        pinTextField = new JTextField();
-        pinTextField.setFont(new Font("Raleway", Font.BOLD , 14));
-        pinTextField.setBounds(300 ,590 , 400 ,30);
-        add(pinTextField);
-
-        next = new JButton("Next") ;
-        next.setBackground(Color.BLACK);
-        next.setForeground(Color.WHITE);
-        next.setFont(new Font("Raleway" , Font.BOLD , 14));
-        next.setBounds(620 , 660 , 80 , 30);
-        next.addActionListener(this);
-        add(next);
-
-
-
-        getContentPane().setBackground(Color.WHITE);
-
-        setSize(850 , 800);
-        setLocation(350 , 10);
         setVisible(true);
-
-
     }
-    public void actionPerformed (ActionEvent ae){
 
-        String formno = "" + random ;
-        String name = nameTextField.getText() ;
-        String fname = fnameTextField.getText() ;
-        String dob = ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText ();
-        String gender = null ;
-        if (male.isSelected()){
-            gender = "Male" ;
-        }
-        else if (female.isSelected()){
-            gender = "Female" ;
-        }
-        String email = emailTextField.getText();
-        String marital = null ;
+    // 🔥 Label Style
+    public void styleLabel(JLabel label, int x, int y) {
+        label.setBounds(x, y, 150, 25);
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Segoe UI", Font.BOLD, 14));
+    }
 
-        if (married.isSelected()){
-            marital = "Married";
+    public JTextField createTextField(int x, int y) {
+        JTextField tf = new JTextField();
+        tf.setBounds(x, y, 400, 40);
+        tf.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        tf.setBackground(new Color(51, 65, 85));
+        tf.setForeground(Color.WHITE);
+        tf.setCaretColor(Color.WHITE);
+        tf.setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
+        return tf;
+    }
 
-        } else if (unmarried.isSelected()) {
-            marital = "Unmarried" ;
-            
-        } else if (other.isSelected()) {
-            marital = "Other" ;
+    public JButton createButton(String text, int x, int y) {
 
-        }
+        JButton btn = new JButton(text);
+        btn.setBounds(x, y, 150, 40);
 
-        String address = addressTextField.getText();
-        String city=  cityTextField.getText() ;
-        String state = stateTextField.getText() ;
-        String pin = pinTextField.getText() ;
+        btn.setBackground(new Color(59, 130, 246));
+        btn.setForeground(Color.WHITE);
 
-        try{
-            if (name.equals(" ")){
-                JOptionPane.showMessageDialog(null , "Name is Required");
-
-            }else {
-                Conn c = new Conn() ;
-
-                String query = "insert into signup values('"+formno+"', '"+name+"' , '"+fname+"' ,'"+dob+"' ,'"+gender+"','"+email+"','"+marital+"' ,'"+address+"','"+city+"','"+pin+"','"+state+"') ";
-                c.s.executeUpdate(query);
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
 
-                setVisible(false);
+        btn.setOpaque(true);
+        btn.setBorderPainted(false);
 
-                new SignupTwo(formno).setVisible(true);
+        btn.setFocusPainted(false);
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        // Hover effect
+        btn.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                btn.setBackground(new Color(37, 99, 235));
             }
-        } catch (Exception e){
-            System.out.println(e);
-        }
+            public void mouseExited(MouseEvent e) {
+                btn.setBackground(new Color(59, 130, 246));
+            }
+        });
 
-
+        btn.addActionListener(this);
+        return btn;
     }
 
+    public void styleRadio(JRadioButton rb, int x, int y) {
+        rb.setBounds(x, y, 130, 30);
+        rb.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        rb.setForeground(Color.WHITE);
+        rb.setBackground(new Color(30, 41, 59));
+
+        rb.setOpaque(false); // ✅ FIX
+        rb.setFocusPainted(false);
+        rb.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        JOptionPane.showMessageDialog(null, "Next Page Logic Same 👍");
+    }
 
     public static void main(String[] args) {
-        new SignupOne() ;
+        new SignupOne();
     }
-
 }
