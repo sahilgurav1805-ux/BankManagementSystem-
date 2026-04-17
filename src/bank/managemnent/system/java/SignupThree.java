@@ -136,21 +136,25 @@ public class SignupThree extends JFrame implements ActionListener {
         c7.setBounds(100 ,680 ,600 , 30);
         add(c7) ;
 
-        submit = new JButton("Submit");
-        submit.setBackground(Color.BLACK);
-        submit.setForeground(Color.white);
-        submit.setFont(new Font("Raleway" ,Font.BOLD ,14));
-        submit.setBounds(250 , 720 , 100 ,30);
+        submit = new JButton("SUBMIT");
+        submit.setBounds(220, 720, 140, 40);
+        submit.setBackground(new Color(59,130,246));
+        submit.setForeground(Color.WHITE);
+        submit.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        submit.setFocusPainted(false);
+        submit.setBorderPainted(false);
         submit.addActionListener(this);
-        add(submit) ;
+        add(submit);
 
-        cancel = new JButton("Cancel");
-        cancel.setBackground(Color.BLACK);
-        cancel.setForeground(Color.white);
-        cancel.setFont(new Font("Raleway" ,Font.BOLD ,14));
-        cancel.setBounds(420 , 720 , 100 ,30);
+        cancel = new JButton("CANCEL");
+        cancel.setBounds(420, 720, 140, 40);
+        cancel.setBackground(new Color(239,68,68));
+        cancel.setForeground(Color.WHITE);
+        cancel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        cancel.setFocusPainted(false);
+        cancel.setBorderPainted(false);
         cancel.addActionListener(this);
-        add(cancel) ;
+        add(cancel);
 
         getContentPane().setBackground(Color.WHITE);
 

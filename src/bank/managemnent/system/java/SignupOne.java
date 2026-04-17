@@ -235,7 +235,10 @@ public class SignupOne extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        JOptionPane.showMessageDialog(null, "Next Page Logic Same 👍");
+        if(ae.getSource() == next){
+            setVisible(false);
+            new SignupTwo(String.valueOf(random)).setVisible(true);
+        }
     }
 
     public static void main(String[] args) {
