@@ -1,88 +1,95 @@
 # Bank Management System
 
-A desktop banking application developed using **Java, Swing, JDBC, and MySQL**.
-This project simulates core banking operations with a user-friendly graphical interface.
+![Java](https://img.shields.io/badge/Java-Swing-007396?logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)
+![JDBC](https://img.shields.io/badge/Connectivity-JDBC-555555)
 
----
+A desktop banking application built with Java Swing, JDBC and MySQL. It simulates core banking operations through a graphical interface backed by a persistent MySQL database.
 
-## 🚀 Features
+## Table of Contents
 
-* 🔐 User Login Authentication
-* 📝 Account Registration / Signup
-* 💰 Deposit Money
-* 💸 Withdraw Money
-* 📊 Balance Enquiry
-* 📄 Mini Statement
-* 🔄 PIN Change
-* 🗄️ MySQL Database Integration
-* 🖥️ Java Swing GUI
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Concepts Demonstrated](#concepts-demonstrated)
+- [Author](#author)
 
----
+## Features
 
-## 🛠️ Tech Stack
+| Feature | Description |
+|---|---|
+| Login authentication | Users log in to access their account. |
+| Account registration | New users can sign up for an account. |
+| Deposit | Add money to the account. |
+| Withdrawal | Withdraw money from the account. |
+| Balance enquiry | View the current account balance. |
+| Mini statement | View recent transactions. |
+| PIN change | Update the account PIN. |
+| Database integration | All data is stored in MySQL through JDBC. |
 
-* **Language:** Java
-* **GUI:** Swing / AWT
-* **Database:** MySQL
-* **Connectivity:** JDBC
-* **IDE:** IntelliJ IDEA / Eclipse / NetBeans
+## Tech Stack
 
----
+| Technology | Purpose |
+|---|---|
+| Java | Core programming language |
+| Swing / AWT | Graphical user interface |
+| MySQL | Relational database |
+| JDBC | Database connectivity |
+| IntelliJ IDEA / Eclipse / NetBeans | Development environments |
 
-## 📂 Project Structure
+## Project Structure
 
-* Login.java
-* Signup.java
-* Deposit.java
-* Withdraw.java
-* BalanceEnquiry.java
-* MiniStatement.java
-* PinChange.java
-* Conn.java
+| File | Responsibility |
+|---|---|
+| `Login.java` | Login screen and authentication |
+| `Signup.java` | Account registration |
+| `Deposit.java` | Deposit transactions |
+| `Withdraw.java` | Withdrawal transactions |
+| `BalanceEnquiry.java` | Balance lookup |
+| `MiniStatement.java` | Recent transaction history |
+| `PinChange.java` | PIN update |
+| `Conn.java` | MySQL database connection |
 
----
+## Getting Started
 
-## ▶️ How to Run
+### Prerequisites
 
-1. Clone the repository
-2. Open project in your Java IDE
-3. Create MySQL database and tables
-4. Update database username/password in Conn.java
-5. Run Login.java
+- JDK installed
+- MySQL installed and running
+- A Java IDE (IntelliJ IDEA, Eclipse or NetBeans)
+- MySQL Connector/J (JDBC driver) added to the project
 
----
+### Installation
 
-## 📸 Screenshots
+1. Clone the repository:
 
-*Add your project screenshots here*
+   ```bash
+   git clone https://github.com/sahilgurav1805-ux/Bank-Management-System.git
+   ```
 
-Example:
+2. Open the project in your Java IDE.
 
-md
-![Login Page](images/login.png)
-![Dashboard](images/dashboard.png)
+3. Create the MySQL database and the required tables.
 
+4. Update the database URL, username and password in `Conn.java`.
 
----
+   > **Security note:** Do not commit your real database password to GitHub.
 
-## 🎯 Learning Outcomes
+5. Run `Login.java` to start the application.
 
-* Object-Oriented Programming
-* GUI Development
-* Database Connectivity
-* CRUD Operations
-* Event Handling
-* Real-world Project Structure
+## Concepts Demonstrated
 
----
+- Object-oriented programming
+- GUI development with Swing
+- Database connectivity with JDBC
+- CRUD operations
+- Event handling
+- Modular project structure
 
-## 👨‍💻 Author
+## Author
 
 **Sahil Gurav**
-GitHub: sahilgurav1805-ux
 
----
-
-## ⭐ Support
-
-If you like this project, give it a star on GitHub!
+- GitHub: [sahilgurav1805-ux](https://github.com/sahilgurav1805-ux)
+- LinkedIn: [sahilgurav18](https://www.linkedin.com/in/sahilgurav18/)
